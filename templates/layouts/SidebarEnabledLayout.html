@@ -1,0 +1,17 @@
+<template name="SidebarEnabledLayout">
+  <header>
+    <h1>{{title}}</h1>
+  </header>
+
+  <aside>
+    {{> yield "aside"}}
+  </aside>
+
+  <article>
+    {{> yield}}
+  </article>
+
+  <footer>
+    {{> footer}}
+  </footer>
+</template>

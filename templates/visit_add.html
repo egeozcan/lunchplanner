@@ -1,0 +1,26 @@
+<template name="visit_add">
+    <h2>
+        Adding a visit to {{ restaurant.title }}!
+        <small>When values disappear, it could mean that a) You've succeeded! Gut gemacht! b) Server crashed</small>
+    </h2>
+    {{#autoForm id="insertTripForm" type="insert" collection="Collections.Visits"}}
+        {{> afFieldInput name='restaurantId' value=restaurant._id type="hidden"}}
+        {{> afQuickField name="title" options="auto"}}
+        {{> afQuickField name="description" options="auto"}}
+        <h4>When are you/we/they leaving, my dear sir or madam?</h4>
+        <div class="row">
+            <div class="col-xs-6">{{> afQuickField name="leaveHour" options="auto"}}</div>
+            <div class="col-xs-6">{{> afQuickField name="leaveMinute" options="auto"}}</div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                {{random
+                    "Let's get all the food"
+                    "All the food are belong to us"
+                    "Y U NO CLICK ALREADY?!"
+                }}
+            </button>
+        </div>
+    {{/autoForm}}
+    {{> trivia }}
+</template>

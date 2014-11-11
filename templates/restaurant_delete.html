@@ -1,0 +1,11 @@
+<template name="restaurant_delete">
+  <h2>
+    <span style="color: red">Y U delete a source of food?</span>
+  </h2>
+  <p>
+  	Please do not forget about the times <strong>{{ restaurant.title }}</strong> saved us from starving.
+  	Every food source deserves a second chance.
+  </p>
+	<a href="#" class="btn btn-danger" role="button">No more {{ restaurant.title }}</a>
+  <a href="/restaurants" class="btn" role="button">I was kidding of course</a>
+</template>

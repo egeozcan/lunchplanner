@@ -1,0 +1,60 @@
+<template name="restaurant">
+    <li id="restaurant-{{_id}}">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>{{ title }}</h3>
+            </div>
+            <div class="col-sm-4">
+                {{#if currentUser}}
+                    <a href="/visit/create/{{_id}}" class="btn btn-primary btn-block" role="button">
+                        We be visiting
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p>
+                    <strong>Address</strong><br>
+                    {{ address }}
+                </p>
+
+                <p>
+                    <strong>Telephone:</strong> {{ phone }}
+                    <br>
+                    <strong>Website:</strong> <a target="_blank" href="{{ website }}">{{ website }}</a>
+                    <br>
+                    <strong>Added:</strong> {{getDate createdAt}}
+                    <br>
+                    <strong>Added by:</strong> {{getUsername owner}}
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    <strong>Notes</strong><br>
+                    {{ or notes "no note is written for this sad restaurant" }}
+                </p>
+            </div>
+            <div class="col-sm-4">
+                {{#if image _id}}
+                    {{#with image _id}}
+                        <strong>Image</strong><br>
+                        <img width="100" height="100" src="{{this.url store='restaurantImageThumbs'}}" alt="thumbnail">
+                    {{/with}}
+                    {{#if equals currentUser._id owner}}
+                        <br><a href="#" class="remove-image" data-restaurant-id="{{_id}}">Delete Image</a>
+                    {{/if}}
+                {{else}}
+                    {{#if equals currentUser._id owner}}
+                        <p>
+                            Add image <input data-restaurant-id="{{_id}}" type="file" class="add-image"/>
+                        </p>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+        {{#if equals currentUser._id owner}}
+            <a class="delete" href="/restaurant/delete/{{_id}}">Dead to me</a>
+        {{/if}}
+    </li>
+</template>

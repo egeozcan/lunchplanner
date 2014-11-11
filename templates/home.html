@@ -1,0 +1,19 @@
+<template name="home">
+    <h2>Planned Options for Today</h2>
+    <ul class="simple-list">
+        {{#if hasVisits}}
+            {{#each visits}}
+                <li>{{> visit }}</li>
+            {{/each}}
+        {{ else }}
+            <li>
+                <h3>No Visits Today</h3>
+                <p>
+                    Sometimes in life, there simply aren't any options already available.
+                    This amazing webapp preaches for the lost souls to create options by going to the
+                    <a href="/restaurants">restaurant list</a> and adding required visits we yet don't have.
+                </p>
+            </li>
+        {{/if}}
+    </ul>
+</template>

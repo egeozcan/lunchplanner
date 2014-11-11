@@ -1,0 +1,38 @@
+<template name="visit">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>
+                <a href="/visit/details/{{_id}}">{{ or title "Untitled Option" }}</a>
+                at {{{ restaurantLink restaurantId }}}
+                <small>{{ moment leaveTime }} ({{ leaveHour }}:{{ leaveMinute }})</small>
+            </h3>
+            <p>
+                <small>
+                    <strong>Created by: </strong>{{getUsername owner}}
+                </small>
+                <br/>
+                {{#if participants}}
+                    <small><strong>Participants:</strong> {{getUsernames participants}}</small>
+                {{/if}}
+            </p>
+            {{#if description}}
+                <p>{{description}}</p>
+            {{/if}}
+        </div>
+        <div class="col-sm-4">
+            {{#if equals owner currentUser._id}}
+                <a href="#" data-visit-id="{{ _id }}" class="btn btn-block btn-warning quit-lunch">
+                    You joined by law
+                </a>
+                <hr/>
+                <a href="#" data-visit-id="{{ _id }}" class="btn btn-block btn-danger delete-lunch">DESTROY!</a>
+            {{else}}
+                {{#if joined _id}}
+                    <a href="#" data-visit-id="{{ _id }}" class="btn btn-block btn-danger quit-lunch">QUIT!</a>
+                {{else}}
+                    <a href="#" data-visit-id="{{ _id }}" class="btn btn-block btn-primary join-lunch">JOIN!</a>
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</template>

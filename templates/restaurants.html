@@ -1,0 +1,50 @@
+<template name="restaurants">
+    {{#if hasRestaurants}}
+        <div class="row">
+            <div class="col-sm-8 col-lg-9">
+                <h2>
+                    Add a visit to one,
+                    {{{random
+                    "for a nice butterfly effect"
+                    "just for the kick"
+                    "to save the planet"
+                    "because why not"
+                    "because a hungry bear doesn't dance <small>(from a Turkish proverb, \"aç ayı oynamaz\")</small>"
+                    "because food is love, love is food, it's all good <small>(wait, what?)</small>"
+                    }}}
+                </h2>
+                <h4>
+                    {{#if currentUser}}
+                        <small>
+                            Mind the green button
+                            <span class="hidden-xs">on the right</span>
+                            too. We need to grab the food from somewhere after all.
+                        </small>
+                    {{ else }}
+                        <small>
+                            Well you need to spend 5 seconds and create an account to be able to do that.
+                            I know, I know... Requirements suck, don't they?
+                        <span class="visible-xs-inline">
+                            And why is your screen so small?
+                        </span>
+                        </small>
+                    {{/if}}
+                </h4>
+            </div>
+            <div class="col-sm-4 col-lg-3">
+                {{> restaurant_buttons }}
+            </div>
+        </div>
+        <hr class="visible-xs-block">
+        <ul class="simple-list">
+            {{#each restaurants}}
+                {{> restaurant}}
+            {{/each}}
+        </ul>
+    {{else}}
+        <h2>No restaurants yet...:(</h2>
+        {{> restaurant_buttons }}
+        <hr/>
+        <img src="/food.jpg" class="img-responsive" alt="food"/>
+    {{/if}}
+</template>

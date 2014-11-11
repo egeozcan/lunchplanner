@@ -1,0 +1,21 @@
+<template name="restaurant_add">
+    <h2>
+        Add a new place where we can feast or gather edibles
+        <small>
+            <a href="/restaurants">...or go back</a>
+            <a style="color: #DDDDDD" target="_blank" href="http://ww.google.com/?q=cats">...or search the Internet for cats</a>
+        </small>
+    </h2>
+    {{#if currentUser}}
+        {{> quickForm collection="Collections.Restaurants" id="insertRestaurantForm" type="insert" omitFields="createdAt,owner,active,imageId"}}
+    {{ else }}
+        <p>
+            You know what? <strong>You can't even create a restaurant!</strong>
+            You need to stop doing what you're doing and log in.
+        </p>
+        <p>
+            Srsly, I know someone who kept experimenting with the holy food system (a.k.a The Lunch Planner) and died.
+        </p>
+    {{/if}}
+    {{> trivia }}
+</template>

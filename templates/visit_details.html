@@ -1,0 +1,22 @@
+<template name="visit_details">
+    {{#with currentVisit}}
+        {{> visit }}
+        <hr/>
+        <h3>Chat</h3>
+
+        <div class="chat-box">
+            <div class="chat-messages">
+                {{#each messages}}
+                    <strong>{{getUsername user}}:</strong> {{message}}<br>
+                {{/each}}
+            </div>
+            <div class="chat-input">
+                <input
+                        type="text"
+                        class="chat-message"
+                        placeholder="Write a message here and press enter."
+                        autofocus="true"/>
+            </div>
+        </div>
+    {{/with}}
+</template>

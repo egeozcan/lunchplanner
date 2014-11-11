@@ -1,0 +1,88 @@
+/* CSS declarations go here */
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 90px;
+}
+
+.container-fluid {
+    max-width: 1280px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+ul.simple-list {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.simple-list li {
+    display: block;
+    list-style: none;
+    min-width: 200px;
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px;
+    border-right: 5px solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+ul.simple-list li:first-of-type {
+    border-top: 1px solid #dddddd;
+}
+
+.delete {
+    color: red;
+    position: absolute;
+    bottom: 18px;
+    right: 20px
+}
+
+.chat-box {
+    border: 1px solid #dddddd;
+    height: 600px;
+    position: relative;
+    margin-bottom: 0px;
+}
+
+.chat-messages {
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 0 5px 0 5px;
+}
+
+.chat-input {
+    height: 59px;
+    border-top: 1px solid #dddddd;
+}
+
+.chat-input input {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 2px;
+    border: none;
+    box-sizing: border-box;
+    font-size: 30px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 3px;
+}
