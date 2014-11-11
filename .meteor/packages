@@ -1,0 +1,14 @@
+meteor-platform
+mizzao:bootstrap-3
+ian:accounts-ui-bootstrap-3
+less
+accounts-password
+accounts-base
+cfs:standard-packages
+cfs:filesystem
+iron:router
+reactive-var
+cfs:graphicsmagick
+aldeed:collection2
+aldeed:autoform
+mrt:moment
