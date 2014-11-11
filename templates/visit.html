@@ -21,10 +21,6 @@
         </div>
         <div class="col-sm-4">
             {{#if equals owner currentUser._id}}
-                <a href="#" data-visit-id="{{ _id }}" class="btn btn-block btn-warning quit-lunch">
-                    You joined by law
-                </a>
-                <hr/>
                 <a href="#" data-visit-id="{{ _id }}" class="btn btn-block btn-danger delete-lunch">DESTROY!</a>
             {{else}}
                 {{#if joined _id}}
