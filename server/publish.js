@@ -6,6 +6,10 @@ Meteor.publish("images", function () {
     return Collections.Images.find();
 });
 
+Meteor.publish("menus", function () {
+    return Collections.Menus.find();
+});
+
 Meteor.publish("visits", function () {
     var startDate = new Date();
     startDate.setHours(0);

@@ -6,6 +6,7 @@ Tracker.autorun(function () {
     Meteor.subscribe("restaurants");
     Meteor.subscribe("allUserData");
     Meteor.subscribe("images");
+    Meteor.subscribe("menus");
 });
 
 Accounts.ui.config({

@@ -4,8 +4,15 @@ Template.restaurant.helpers({
         if(!restaurant.imageId) {
             return null;
         }
-        var image = Collections.Images.findOne(restaurant.imageId);
-        return image;
+        return Collections.Images.findOne(restaurant.imageId);
+    },
+    menu: function(restaurantId) {
+        var restaurant = Collections.Restaurants.findOne(restaurantId);
+        if(!restaurant.menuId) {
+            return null;
+        }
+        var menu = Collections.Menus.findOne(restaurant.menuId);
+        return menu;
     }
 });
 
@@ -21,5 +28,17 @@ Template.restaurant.events({
     'click .remove-image': function(event, template) {
         var restaurantId = $(event.currentTarget).data("restaurantId");
         Meteor.call("deleteRestaurantImage", restaurantId);
+    },
+    'change .add-menu': function(event, template) {
+        var restaurantId = $(event.currentTarget).data("restaurantId");
+        FS.Utility.eachFile(event, function(file) {
+            Collections.Menus.insert(file, function (err, fileObj) {
+                Meteor.call("setRestaurantMenu", restaurantId, fileObj._id);
+            });
+        });
+    },
+    'click .remove-menu': function(event, template) {
+        var restaurantId = $(event.currentTarget).data("restaurantId");
+        Meteor.call("deleteRestaurantMenu", restaurantId);
     }
 });

@@ -80,5 +80,23 @@ Meteor.methods({
         }
         Collections.Images.remove(restaurant.imageId);
         Collections.Restaurants.update(restaurantId, {$set: {imageId: null}});
+    },
+    setRestaurantMenu: function setRestaurantMenu(restaurantId, menuId) {
+        check(restaurantId, String);
+        check(menuId, String);
+        var restaurant = Collections.Restaurants.findOne(restaurantId);
+        if (!this.userId || !restaurant || restaurant.owner !== this.userId) {
+            throw new Meteor.Error("junkie","No.");
+        }
+        Collections.Restaurants.update(restaurantId, {$set: {menuId: menuId}});
+    },
+    deleteRestaurantMenu: function deleteRestaurantMenu(restaurantId) {
+        check(restaurantId, String);
+        var restaurant = Collections.Restaurants.findOne(restaurantId);
+        if (!this.userId || !restaurant || restaurant.owner !== this.userId) {
+            throw new Meteor.Error("junkie","No.");
+        }
+        Collections.Menus.remove(restaurant.menuId);
+        Collections.Restaurants.update(restaurantId, {$set: {menuId: null}});
     }
 });

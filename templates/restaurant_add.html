@@ -7,7 +7,12 @@
         </small>
     </h2>
     {{#if currentUser}}
-        {{> quickForm collection="Collections.Restaurants" id="insertRestaurantForm" type="insert" omitFields="createdAt,owner,active,imageId"}}
+        {{> quickForm
+            collection="Collections.Restaurants"
+            id="insertRestaurantForm"
+            type="insert"
+            omitFields="createdAt,owner,active,imageId,menuId"
+        }}
     {{ else }}
         <p>
             You know what? <strong>You can't even create a restaurant!</strong>

@@ -12,8 +12,9 @@
                 {{/if}}
             </div>
         </div>
+        <hr/>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <p>
                     <strong>Address</strong><br>
                     {{ address }}
@@ -27,18 +28,32 @@
                     <strong>Added:</strong> {{getDate createdAt}}
                     <br>
                     <strong>Added by:</strong> {{getUsername owner}}
+                    <br>
+                    <strong>Menu:</strong>
+                    {{#if menu _id}}
+                        {{#with menu _id}}
+                            <a href="{{this.url}}" target="_blank" title="menu">
+                                Menu
+                            </a>
+                        {{/with}}
+                        {{#if equals currentUser._id owner}}
+                            <small>
+                                <a href="#" style="color: red" class="remove-menu" data-restaurant-id="{{_id}}"> (Delete)</a>
+                            </small>
+                        {{/if}}
+                    {{else}}
+                        {{#if equals currentUser._id owner}}
+                            Add menu <input data-restaurant-id="{{_id}}" type="file" class="add-menu"/>
+                        {{/if}}
+                    {{/if}}
                 </p>
             </div>
-            <div class="col-sm-4">
-                <p>
-                    <strong>Notes</strong><br>
-                    {{ or notes "no note is written for this sad restaurant" }}
-                </p>
-            </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 {{#if image _id}}
                     {{#with image _id}}
-                        <img src="{{this.url store='restaurantImageThumbs'}}" alt="thumbnail">
+                        <a href="{{this.url store='restaurantImages'}}" target="_blank">
+                            <img src="{{this.url store='restaurantImageThumbs'}}" alt="thumbnail">
+                        </a>
                     {{/with}}
                     {{#if equals currentUser._id owner}}
                         <br><a href="#" class="remove-image" data-restaurant-id="{{_id}}">Delete Image</a>
@@ -51,6 +66,12 @@
                         </p>
                     {{/if}}
                 {{/if}}
+            </div>
+            <div class="col-sm-3">
+                <p>
+                    <strong>Notes</strong><br>
+                    {{ or notes "no note is written for this sad restaurant" }}
+                </p>
             </div>
         </div>
         {{#if equals currentUser._id owner}}

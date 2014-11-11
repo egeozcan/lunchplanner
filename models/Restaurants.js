@@ -22,6 +22,10 @@ Schemas.RestaurantSchema = new SimpleSchema({
 		type: String,
 		optional: true
 	},
+	menuId: {
+		type: String,
+		optional: true
+	},
 	website: {
 		type: String,
 		regEx: SimpleSchema.RegEx.Url,

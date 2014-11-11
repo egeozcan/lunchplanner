@@ -5,3 +5,14 @@ Collections.Menus = new FS.Collection("menus", {
     })
   ]
 });
+Collections.Menus.allow({
+  insert: function (userId, doc) {
+    return !!userId;
+  },
+  update: function (userId, doc) {
+    return !!userId;
+  },
+  download: function() {
+    return true;
+  }
+});
