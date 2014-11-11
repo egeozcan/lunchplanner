@@ -15,7 +15,9 @@ Template.registerHelper("isFutureDate", function (d) {
 });
 
 Template.registerHelper("getTime", function (d) {
-    return d.getHours() + ":" + d.getMinutes();
+    var h = d.getHours().toString();
+    var m = d.getMinutes().toString();
+    return (h.length == 2 ? "" : "0") + h + ":" + (m.length == 2 ? "" : "0") + m;
 });
 
 Template.registerHelper("getDate", function (d) {

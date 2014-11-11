@@ -4,7 +4,7 @@
             <h3>
                 <a href="/visit/details/{{_id}}">{{ or title "Untitled Option" }}</a>
                 at {{{ restaurantLink restaurantId }}}
-                <small>{{ moment leaveTime }} ({{ leaveHour }}:{{ leaveMinute }})</small>
+                <small>{{ moment leaveTime }} ({{ getTime leaveTime }})</small>
             </h3>
             <p>
                 <small>
