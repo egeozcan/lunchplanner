@@ -38,13 +38,13 @@
             <div class="col-sm-4">
                 {{#if image _id}}
                     {{#with image _id}}
-                        <strong>Image</strong><br>
-                        <img width="100" height="100" src="{{this.url store='restaurantImageThumbs'}}" alt="thumbnail">
+                        <img src="{{this.url store='restaurantImageThumbs'}}" alt="thumbnail">
                     {{/with}}
                     {{#if equals currentUser._id owner}}
                         <br><a href="#" class="remove-image" data-restaurant-id="{{_id}}">Delete Image</a>
                     {{/if}}
                 {{else}}
+                    <strong>No image yet</strong><br>
                     {{#if equals currentUser._id owner}}
                         <p>
                             Add image <input data-restaurant-id="{{_id}}" type="file" class="add-image"/>
