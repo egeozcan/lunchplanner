@@ -48,14 +48,15 @@ $(function() {
                 }
                 message += " at " + restaurant.title;
                 message += " " + moment(doc.leaveTime).fromNow();
-                var options = {};
+                var options = { body: message };
                 if(restaurant.imageId) {
                     options.icon = Collections.Images.findOne(restaurant.imageId).url({store:'restaurantImageThumbs'})
                 }
-                var n = notify(message, options);
+                var n = notify("Good news everyone!", options);
                 n.onclick = function() {
                     window.location = "/visit/details/" + doc._id;
                 }
+                setTimeout(function () { n.close(); }, 15000);
             }
         }
     });

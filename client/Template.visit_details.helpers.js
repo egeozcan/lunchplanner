@@ -16,7 +16,15 @@ Template.visit_details.helpers({
     },
     messages: function () {
         scrollMessagesToBottom();
-        return Collections.Visits.findOne(Session.get("visitId")).chatMessages;
+        var chatMessages = Collections.Visits.findOne(Session.get("visitId")).chatMessages
+        if (!document.hasFocus() && !!chatMessages) {
+            var lastMessage = chatMessages[chatMessages.length - 1];
+            var user = Meteor.users.findOne(lastMessage.user).username;
+            var n = notify(user, { body: lastMessage.message });
+            n.onclick = function() { $(".chat-message").focus(); };
+            setTimeout(function () { n.close(); }, 4000);
+        };
+        return chatMessages;
     }
 });
 
