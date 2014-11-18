@@ -35,26 +35,26 @@ if(window.Notification) {
 
 $(function() {
     Collections.Visits.find({}).observe({
-        added: function(document) {
-            if(document.owner !== Meteor.userId()) {
-                var user = Meteor.users.findOne(document.owner);
+        added: function(doc) {
+            if(doc.owner !== Meteor.userId()) {
+                var user = Meteor.users.findOne(doc.owner);
                 if(!user) {
                     return;
                 }
-                var message = user.username + " added a new food option!";
-                var restaurant = Collections.Restaurants.findOne(document.restaurantId);
-                if(document.title) {
-                    message += " with the title " + document.title
+                var message = user.username + " added a new food option";
+                var restaurant = Collections.Restaurants.findOne(doc.restaurantId);
+                if(doc.title) {
+                    message += " with the title " + doc.title
                 }
                 message += " at " + restaurant.title;
-                message += " " + moment(document.leaveTime).fromNow();
+                message += " " + moment(doc.leaveTime).fromNow();
                 var options = {};
                 if(restaurant.imageId) {
                     options.icon = Collections.Images.findOne(restaurant.imageId).url({store:'restaurantImageThumbs'})
                 }
                 var n = notify(message, options);
                 n.onclick = function() {
-                    window.location = "/visit/details/" + document._id;
+                    window.location = "/visit/details/" + doc._id;
                 }
             }
         }
