@@ -30,7 +30,7 @@ if(window.Notification) {
         return new Notification(message, options);
     }
 } else {
-    window.notify = function() {}
+    window.notify = function() { return {}; }
 }
 
 $(function() {
