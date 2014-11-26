@@ -1,2 +1,3 @@
 syntax: glob
 .meteor/local/*
+.idea/workspace.xml
