@@ -13,17 +13,6 @@ Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });
 
-window.adjustChatBox = function () {
-    var cb = $(".chat-box");
-    if (!cb.length) {
-        return;
-    }
-    var possibleHeight = $(window).height() - cb.offset().top - $(".footer").height() - 70;
-    var height = Math.max(possibleHeight, 200);
-    cb.children(".chat-messages").height(height - 60);
-    cb.height(height);
-};
-
 if(window.Notification) {
     Notification.requestPermission();
     window.notify = function(message, options) {
@@ -61,8 +50,6 @@ $(function() {
         }
     });
 });
-
-$(window).on("resize", adjustChatBox);
 
 //Meteor.setInterval(function() {
 //    var messageBox = $(".chat-messages");
