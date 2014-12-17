@@ -2,16 +2,16 @@
     <li id="restaurant-{{_id}}">
         <h3>{{ title }}</h3>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 {{#if image _id}}
                     {{#with image _id}}
-                        <a href="{{this.url store='restaurantImages'}}" target="_blank" class="thumbnail">
+                        <a style="margin-bottom: 3px" href="{{this.url store='restaurantImages'}}" target="_blank" class="thumbnail">
                             <img class="img-responsive" src="{{this.url store='restaurantImageThumbs'}}" alt="thumbnail">
                         </a>
                     {{/with}}
-                    {{#if equals currentUser._id owner}}
+                    <!--{{#if equals currentUser._id owner}}
                         <a href="#" class="remove-image" data-restaurant-id="{{_id}}">Delete Image</a>
-                    {{/if}}
+                    {{/if}}-->
                 {{else}}
                     <span class="glyphicon glyphicon-cutlery" style="font-size: 106px"></span>
                     {{#if equals currentUser._id owner}}
@@ -21,46 +21,43 @@
                     {{/if}}
                 {{/if}}
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <p>
-                    <pre>{{ address }}</pre>
-                </p>
-
-                <p>
-                    <strong>Telephone:</strong> {{ phone }}
-                    <br>
-                    <strong>Website:</strong> <a target="_blank" href="{{ website }}">{{ title }}</a>
-                    <br>
-                    <strong>Menu:</strong>
-                    {{#if menu _id}}
-                        {{#with menu _id}}
-                            <a href="{{this.url}}" target="_blank" title="menu">
-                                Menu
-                            </a>
-                        {{/with}}
-                        {{#if equals currentUser._id owner}}
-                            <small>
-                                <a href="#" style="color: red" class="remove-menu" data-restaurant-id="{{_id}}"> (Delete)</a>
-                            </small>
-                        {{/if}}
-                    {{else}}
-                        {{#if equals currentUser._id owner}}
-                            Add menu <input data-restaurant-id="{{_id}}" type="file" class="add-menu"/>
-                        {{/if}}
-                    {{/if}}
+                    <dl><dt>Address:</dt> <dd class="address">{{ address }}</dd></dl>
+                    <dl><dt>Telephone:</dt> <dd>{{ phone }}</dd></dl>
+                    <dl><dt>Website:</dt> <dd><a target="_blank" href="{{ website }}">{{ title }}</a></dd></dl>
+                    <dl>
+                        <dt>Menu:</dt>
+                        <dd>
+                            {{#if menu _id}}
+                                {{#with menu _id}}
+                                    <a href="{{this.url}}" target="_blank" title="menu">
+                                        Menu
+                                    </a>
+                                {{/with}}
+                                {{#if equals currentUser._id owner}}
+                                    <small>
+                                        <a href="#" style="color: red" class="remove-menu" data-restaurant-id="{{_id}}"> (Delete)</a>
+                                    </small>
+                                {{/if}}
+                            {{else}}
+                                {{#if equals currentUser._id owner}}
+                                    Add menu <input data-restaurant-id="{{_id}}" type="file" class="add-menu"/>
+                                {{/if}}
+                            {{/if}}
+                        </dd>
+                    </dl>
                 </p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-7">
+                <strong>Notes</strong><br>
+                {{ or notes "..." }}
                 {{#if currentUser}}
-                    <a href="/visit/create/{{_id}}" class="btn btn-primary btn-block" role="button">
-                        We be visiting
+                    <hr/>
+                    <a href="/visit/create/{{_id}}" class="btn btn-primary" role="button">
+                        Plan Eating Here
                     </a>
-                    <hr>
                 {{/if}}
-                <p>
-                    <strong>Notes</strong><br>
-                    {{ or notes "no note is written for this sad restaurant" }}
-                </p>
             </div>
         </div>
         {{#if equals currentUser._id owner}}

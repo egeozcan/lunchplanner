@@ -1,0 +1,27 @@
+<template name="LoadingLayout">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <style>
+            html, body {
+                height: 100%;
+            }
+            body {
+                margin-top: 30px;
+                text-align: center;
+            }
+            video {
+                height: 280px;
+                width: 500px;
+            }
+        </style>
+    </head>
+    <body>
+    <!-- Begin page content -->
+    <div style="width:500px; margin:0 auto">
+        <video name="media" src="/loading.mp4" loop autoplay>
+            <source video-src="/loading.mp4" type="video/mp4" class="source-mp4" src="/loading.mp4">
+        </video>
+        {{> yield}}
+    </div>
+    </body>
+</template>
