@@ -86,3 +86,15 @@ ul.simple-list li:first-of-type {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-top: 3px;
 }
+
+dt, dd {
+    display: inline;
+}
+
+dl {
+    margin-bottom: 3px;
+}
+
+dd.address {
+    white-space: pre-wrap;
+}
