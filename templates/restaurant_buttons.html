@@ -1,11 +1,8 @@
 <template name="restaurant_buttons">
   {{#if currentUser}}
-      <a href="/restaurant/create" class="btn btn-lg btn-success btn-block" role="button">
+      <a href="/restaurant/create" style="margin-bottom: 10px" class="btn btn-lg btn-success" role="button">
         Add Food Source
       </a>
   {{ else }}
-      <a href="#" class="btn btn-lg btn-warning disabled btn-block" role="button">
-        {{random "Need to register to add..." "Y U NO LOGIN BTW?"}}
-      </a>
   {{/if}}
 </template>

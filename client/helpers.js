@@ -54,6 +54,10 @@ Template.registerHelper("or", function () {
     return "";
 });
 
+Template.registerHelper("ifthenelse", function () {
+    return !!arguments[0] ? arguments[1] : arguments[2];
+});
+
 Template.registerHelper("restaurantLink", function (restaurantId) {
     var restaurant = Collections.Restaurants.findOne(restaurantId);
     if(!restaurant) {
